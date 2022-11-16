@@ -6,41 +6,55 @@ import org.testng.annotations.Test;
 public class TestUsernamePassword {
     @Test
     public void testGmailAbilityToEnterWithCorrectUsernamePassword() throws InterruptedException {
-        Email email = new Email();
-        Assert.assertTrue(email.loginGmail("otabeksenderemail@gmail.com", "SenderEmail"));
+        Login login = new Login();
+        Assert.assertTrue(login.loginGmail("otabeksenderemail@gmail.com", "SenderEmail"));
+        login.quit();
     }
 
     @Test
     public void testGmailImpossibilityOfEnteringWithWrongPasswordUsername() throws InterruptedException {
-        Email email = new Email();
-        Assert.assertFalse(email.loginGmail("otabeksenderemail@gmail.com", "Sender1Email"));
-        Assert.assertFalse(email.loginGmail("otabekreceivaremail@mail.ru", "ReceiverEmail"));
+        Login loginWithIncorrectPassword = new Login();
+        Login loginWithIncorrectUsername = new Login();
+        Assert.assertFalse(loginWithIncorrectPassword.loginGmail("otabeksenderemail@gmail.com", "Sender1Email"));
+        Assert.assertFalse(loginWithIncorrectUsername.loginGmail("otabekreceivaremail@mail.ru", "ReceiverEmail"));
+        loginWithIncorrectPassword.quit();
+        loginWithIncorrectUsername.quit();
     }
 
     @Test
-    public void testGmailImpossibilityOfEnteringWithEmptyUsernamePassword() throws InterruptedException {
-        Email email = new Email();
-        Assert.assertFalse(email.loginGmail("", "ReceiverEmail"));
-        Assert.assertFalse(email.loginGmail("otabekreceiveremail@gmail.com", ""));
+    public void testGmailImpossibilityOfEnteringWithEmptyUsernamePassword() {
+        Login loginWithEmptyUsername = new Login();
+        Login loginWithEmptyPassword = new Login();
+        Assert.assertFalse(loginWithEmptyUsername.loginGmail("", "ReceiverEmail"));
+        Assert.assertFalse(loginWithEmptyPassword.loginGmail("otabekreceiveremail@gmail.com", ""));
+        loginWithEmptyUsername.quit();
+        loginWithEmptyPassword.quit();
     }
 
     @Test
-    public void testMailAbilityToEnterWithCorrectUsernamePassword() throws InterruptedException {
-        Email email = new Email();
-        Assert.assertTrue(email.loginMail("otabekreceiveremail@mail.ru", "ReceiverEmail"));
+    public void testMailAbilityToEnterWithCorrectUsernamePassword() {
+        Login login = new Login();
+        Assert.assertTrue(login.loginMail("otabekreceiveremail@mail.ru", "ReceiverEmail"));
+        login.quit();
     }
 
     @Test
-    public void testMailImpossibilityOfEnteringWithWrongPasswordUsername() throws InterruptedException {
-        Email email = new Email();
-        Assert.assertFalse(email.loginMail("otabeksenderemail@gmail.com", "Sender1Email"));
-        Assert.assertFalse(email.loginMail("otabekreceivaremail@mail.ru", "Receiver20001Email"));
+    public void testMailImpossibilityOfEnteringWithWrongPasswordUsername() {
+        Login loginWithIncorrectUsername = new Login();
+        Login loginWithIncorrectPassword = new Login();
+        Assert.assertFalse(loginWithIncorrectUsername.loginMail("otabeksenderemail@gmail.com", "Sender1Email"));
+        Assert.assertFalse(loginWithIncorrectPassword.loginMail("otabekreceivaremail@mail.ru", "Receiver20001Email"));
+        loginWithIncorrectPassword.quit();
+        loginWithIncorrectUsername.quit();
     }
 
     @Test
     public void testMailImpossibilityOfEnteringWithEmptyUsernamePassword() throws InterruptedException {
-        Email email = new Email();
-        Assert.assertFalse(email.loginMail("", "SenderEmail"));
-        Assert.assertFalse(email.loginMail("otabeksenderemail@gmail.com", ""));
+        Login loginWithEmptyUsername = new Login();
+        Login loginWithEmptyPassword = new Login();
+        Assert.assertFalse(loginWithEmptyUsername.loginMail("", "SenderEmail"));
+        Assert.assertFalse(loginWithEmptyPassword.loginMail("otabeksenderemail@gmail.com", ""));
+        loginWithEmptyUsername.quit();
+        loginWithEmptyPassword.quit();
     }
 }
