@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="TestCreationAndReceiptMessage" verbose="1" >
+    <test name="TestCreationAndReceiptMessage"   >
+        <classes>
+            <class name="com.epam.ta.test.TestCreationAndReceiptMessage" />
+        </classes>
+    </test>
+</suite>

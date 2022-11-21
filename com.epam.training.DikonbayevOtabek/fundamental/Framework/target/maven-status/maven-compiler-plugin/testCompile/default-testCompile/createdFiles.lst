@@ -1,0 +1,17 @@
+com\epam\ta\service\UserCreator.class
+com\epam\ta\test\MailUserAccessTests.class
+com\epam\ta\page\CreateNewEmailPage.class
+com\epam\ta\page\LoginPage.class
+com\epam\ta\test\GmailUserAccessTests.class
+com\epam\ta\page\MailMainPage.class
+com\epam\ta\model\User.class
+com\epam\ta\service\TestDataReader.class
+com\epam\ta\page\AbstractPage.class
+com\epam\ta\page\EmailReceivePage.class
+com\epam\ta\driver\DriverSingleton.class
+com\epam\ta\test\Main.class
+com\epam\ta\test\CommonConditions.class
+com\epam\ta\util\TestListener.class
+com\epam\ta\test\TestCreationAndReceiptMessage.class
+com\epam\ta\util\StringUtils.class
+com\epam\ta\page\GmailMainPage.class

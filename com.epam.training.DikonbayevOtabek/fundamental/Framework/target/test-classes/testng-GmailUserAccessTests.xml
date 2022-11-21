@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="GmailUserAccessTests" verbose="1" >
+    <test name="GmailUserAccessTests"   >
+        <classes>
+            <class name="com.epam.ta.test.GmailUserAccessTests" />
+        </classes>
+    </test>
+</suite>
