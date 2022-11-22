@@ -32,8 +32,7 @@ public class MailMainPage extends AbstractPage{
 
     public boolean isButtonVisible(){
         try{
-            WebElement newMessageButton = new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                    .until(ExpectedConditions.presenceOfElementLocated(newMessageButtonMailLocator));
+            WebElement newMessageButton = wait.until(ExpectedConditions.presenceOfElementLocated(newMessageButtonMailLocator));
             return newMessageButton.isDisplayed();
         }catch (Exception exception){
             return false;

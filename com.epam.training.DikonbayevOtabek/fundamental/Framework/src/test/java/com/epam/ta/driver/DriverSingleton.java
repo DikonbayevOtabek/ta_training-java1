@@ -8,23 +8,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
 
-/*
-switch (System.getProperty("browser")){
-                case "firefox": {
-                    FirefoxOptions firefoxOptions = new FirefoxOptions();
-                    firefoxOptions.setBinary("C:\\Program Files\\Mozilla Firefox\\firefox.exe");
-                    WebDriverManager.firefoxdriver().setup();
-                    driver = new FirefoxDriver(firefoxOptions);
-                }
-                default: {
-                    ChromeOptions chromeOptions= new ChromeOptions();
-                    chromeOptions.setBinary("C:\\Users\\Otabek\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe");
-                    WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver(chromeOptions);
-                }
-            }
-
- */
 public class DriverSingleton {
     private static WebDriver driver;
 
