@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class EmailReceivePage extends AbstractPage{
 
     private final String BASE_URL = "https://e.mail.ru/messages/inbox/";
-
     private final By addressOfSenderLocator = By.xpath("//span[@class='ll-crpt']");
     private final By valueOfMessageLocator = By.xpath("//div[@dir='ltr']");
 
@@ -21,16 +20,13 @@ public class EmailReceivePage extends AbstractPage{
     }
 
     public String getSenderName(){
-        WebElement addressOfSender = new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions.presenceOfElementLocated(addressOfSenderLocator));
+        WebElement addressOfSender = wait.until(ExpectedConditions.presenceOfElementLocated(addressOfSenderLocator));
         return addressOfSender.getText();
     }
     public  String getValueOfMessage(){
-        WebElement addressOfSender = new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions.presenceOfElementLocated(addressOfSenderLocator));
+        WebElement addressOfSender = wait.until(ExpectedConditions.presenceOfElementLocated(addressOfSenderLocator));
         addressOfSender.click();
-        WebElement valueOfMessage = new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions.presenceOfElementLocated(valueOfMessageLocator));
+        WebElement valueOfMessage = wait.until(ExpectedConditions.presenceOfElementLocated(valueOfMessageLocator));
         return valueOfMessage.getText();
 
     }

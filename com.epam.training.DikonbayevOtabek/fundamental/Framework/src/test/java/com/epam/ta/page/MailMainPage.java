@@ -3,10 +3,8 @@ package com.epam.ta.page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MailMainPage extends AbstractPage{
     private final String BASE_URL = "https://mail.ru/login";
@@ -23,16 +21,14 @@ public class MailMainPage extends AbstractPage{
         return new EmailReceivePage(driver);
     }
     public boolean isMessageArrived(){
-        WebElement numberOfUnreadMessages = new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions.visibilityOfElementLocated(numberOfUnreadMessagesLocator));
+        WebElement numberOfUnreadMessages = wait.until(ExpectedConditions.visibilityOfElementLocated(numberOfUnreadMessagesLocator));
         int numberOfReceivedMessage = Integer.parseInt(numberOfUnreadMessages.getText());
         return numberOfReceivedMessage >= 1;
     }
 
     public boolean isButtonVisible(){
         try{
-            WebElement newMessageButton = new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                    .until(ExpectedConditions.presenceOfElementLocated(newMessageButtonMailLocator));
+            WebElement newMessageButton = wait.until(ExpectedConditions.presenceOfElementLocated(newMessageButtonMailLocator));
             return newMessageButton.isDisplayed();
         }catch (Exception exception){
             return false;

@@ -21,8 +21,6 @@ public class CreateNewEmailPage extends AbstractPage{
     private WebElement textOfMessage;
     @FindBy(xpath = "//div[@class='T-I J-J5-Ji aoO v7 T-I-atl L3']")
     private WebElement sendButton;
-    //dir="ltr"
-
 
     private final By receiverAddressLocator = By.xpath("//input[@class='agP aFw']");
     private final By openSentMessageLocator = By.xpath("//tr[@class='zA yO']");
@@ -38,8 +36,7 @@ public class CreateNewEmailPage extends AbstractPage{
 
     public CreateNewEmailPage createNewEmail(String textMessage, String textOfTheme) throws InterruptedException {
 
-        WebElement receiverAddress = new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions.presenceOfElementLocated(receiverAddressLocator));
+        WebElement receiverAddress = wait.until(ExpectedConditions.presenceOfElementLocated(receiverAddressLocator));
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].value='otabekreceiveremail@mail.ru'", receiverAddress);
         themeOfMessage.sendKeys(textOfTheme);
@@ -51,12 +48,10 @@ public class CreateNewEmailPage extends AbstractPage{
         return this;
     }
     public String getValueOfMessage(){
-        WebElement openSentMessage = new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions.presenceOfElementLocated(openSentMessageLocator));
+        WebElement openSentMessage = wait.until(ExpectedConditions.presenceOfElementLocated(openSentMessageLocator));
         openSentMessage.click();
 
-        WebElement valueOfMessage = new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions.visibilityOfElementLocated(valueOfMessageLocator));
+        WebElement valueOfMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(valueOfMessageLocator));
         return valueOfMessage.getText();
     }
 

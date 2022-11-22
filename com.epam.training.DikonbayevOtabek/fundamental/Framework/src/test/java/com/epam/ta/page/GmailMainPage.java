@@ -20,15 +20,13 @@ public class GmailMainPage extends AbstractPage {
     }
 
     public CreateNewEmailPage invokeNewEmailCreation(){
-        WebElement createNewMessageButton = new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions.elementToBeClickable(createNewMessageButtonLocator));
+        WebElement createNewMessageButton = wait.until(ExpectedConditions.elementToBeClickable(createNewMessageButtonLocator));
         createNewMessageButton.click();
         return new CreateNewEmailPage(driver);
     }
     public boolean isButtonVisible(){
         try {
-            WebElement newMessageButtonGmail = new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                    .until(ExpectedConditions.visibilityOfElementLocated(newMessageButtonGmailLocator));
+            WebElement newMessageButtonGmail = wait.until(ExpectedConditions.visibilityOfElementLocated(newMessageButtonGmailLocator));
             return newMessageButtonGmail.isDisplayed();
         }catch (Exception exception) {
             return false;
