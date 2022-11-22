@@ -10,9 +10,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GmailMainPage extends AbstractPage {
     private final String BASE_URL = "https://gmail.com";
+    private WebDriverWait wait = new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS);
 
-    private final By createNewMessageButtonLocator = By.xpath("//div[@style='user-select: none']");
-    private final By newMessageButtonGmailLocator = By.xpath("//span[@class='nU ']");
+    @FindBy(xpath = "//div[@style='user-select: none']")
+    WebElement createNewMessageButton;
+    @FindBy(xpath = "//span[@class='nU ']")
+    WebElement newMessageButtonGmail;
+
 
     public GmailMainPage(WebDriver driver) {
         super(driver);
@@ -20,13 +24,13 @@ public class GmailMainPage extends AbstractPage {
     }
 
     public CreateNewEmailPage invokeNewEmailCreation(){
-        WebElement createNewMessageButton = wait.until(ExpectedConditions.elementToBeClickable(createNewMessageButtonLocator));
+        wait.until(ExpectedConditions.elementToBeClickable(createNewMessageButton));
         createNewMessageButton.click();
         return new CreateNewEmailPage(driver);
     }
     public boolean isButtonVisible(){
         try {
-            WebElement newMessageButtonGmail = wait.until(ExpectedConditions.visibilityOfElementLocated(newMessageButtonGmailLocator));
+            wait.until(ExpectedConditions.visibilityOf(newMessageButtonGmail));
             return newMessageButtonGmail.isDisplayed();
         }catch (Exception exception) {
             return false;

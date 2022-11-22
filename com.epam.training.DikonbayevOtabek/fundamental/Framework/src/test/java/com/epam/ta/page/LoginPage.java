@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage extends AbstractPage{
     private final Logger logger = LogManager.getRootLogger();
@@ -50,7 +51,8 @@ public class LoginPage extends AbstractPage{
     public GmailMainPage gmailLogin(User user){
         usernameGmail.sendKeys(user.getUsername(), Keys.ENTER);
         try{
-            WebElement passwordGmail = wait.until(ExpectedConditions.presenceOfElementLocated(passwordGmailLocator));
+            WebElement passwordGmail = new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
+                    .until(ExpectedConditions.presenceOfElementLocated(passwordGmailLocator));
             passwordGmail.sendKeys(user.getPassword(), Keys.ENTER);
             return new GmailMainPage(driver);
         }catch (Exception exception){

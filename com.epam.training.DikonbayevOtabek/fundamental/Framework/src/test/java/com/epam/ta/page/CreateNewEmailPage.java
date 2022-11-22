@@ -14,6 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class CreateNewEmailPage extends AbstractPage{
     private final String SENT_MESSAGE_URL = "https://mail.google.com/mail/u/0/#sent";
     private final Logger logger = LogManager.getRootLogger();
+    private WebDriverWait wait = new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS);
 
     @FindBy(xpath = "//input[@name='subjectbox']")
     private WebElement themeOfMessage;
@@ -21,10 +22,11 @@ public class CreateNewEmailPage extends AbstractPage{
     private WebElement textOfMessage;
     @FindBy(xpath = "//div[@class='T-I J-J5-Ji aoO v7 T-I-atl L3']")
     private WebElement sendButton;
+    @FindBy(xpath = "//div[@class='a3s aiL ']")
+    WebElement valueOfMessage;
 
     private final By receiverAddressLocator = By.xpath("//input[@class='agP aFw']");
     private final By openSentMessageLocator = By.xpath("//tr[@class='zA yO']");
-    private final By valueOfMessageLocator = By.xpath("//div[@class='a3s aiL ']");
 
 
 
@@ -51,7 +53,8 @@ public class CreateNewEmailPage extends AbstractPage{
         WebElement openSentMessage = wait.until(ExpectedConditions.presenceOfElementLocated(openSentMessageLocator));
         openSentMessage.click();
 
-        WebElement valueOfMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(valueOfMessageLocator));
+
+        wait.until(ExpectedConditions.visibilityOf(valueOfMessage));
         return valueOfMessage.getText();
     }
 
