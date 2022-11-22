@@ -30,11 +30,20 @@ public class DriverSingleton {
 
     public static WebDriver getDriver() {
         if (driver == null) {
-            ChromeOptions chromeOptions= new ChromeOptions();
-            chromeOptions.setBinary("C:\\Users\\Otabek\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe");
-            WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver(chromeOptions);
-
+            switch (System.getProperty("browser")){
+                case "firefox": {
+                    FirefoxOptions firefoxOptions = new FirefoxOptions();
+                    firefoxOptions.setBinary("C:\\Program Files\\Mozilla Firefox\\firefox.exe");
+                    WebDriverManager.firefoxdriver().setup();
+                    driver = new FirefoxDriver(firefoxOptions);
+                }
+                default: {
+                    ChromeOptions chromeOptions= new ChromeOptions();
+                    chromeOptions.setBinary("C:\\Users\\Otabek\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe");
+                    WebDriverManager.chromedriver().setup();
+                    driver = new ChromeDriver(chromeOptions);
+                }
+            }
             driver.manage().window().maximize();
         }
         return driver;
