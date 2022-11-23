@@ -26,7 +26,5 @@ public class StringUtils
     public static String generateRandomMessageValueWithPostfixLength(int postfixLength){
         return "testMessage_".concat(getRandomString(postfixLength));
     }
-    public static String generateRandomThemeOfMessageWithPostfixLength(int postfixLength){
-        return "testThemeOfMessage_".concat(getRandomString(postfixLength));
-    }
+
 }

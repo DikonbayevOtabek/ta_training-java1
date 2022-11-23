@@ -10,27 +10,33 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class DriverSingleton {
     private static WebDriver driver;
+    // Both of paths are defaults path
+    private final static String chromeBinaryPath = "C:\\Users\\Otabek\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe";
+    private final static String firefoxBinaryPath = "C:\\Program Files\\Mozilla Firefox\\firefox.exe";
 
     public static WebDriver getDriver() {
         if (driver == null) {
             switch (System.getProperty("browser")){
                 case "firefox": {
                     FirefoxOptions firefoxOptions = new FirefoxOptions();
-                    firefoxOptions.setBinary("C:\\Program Files\\Mozilla Firefox\\firefox.exe");
+                    firefoxOptions.setBinary(firefoxBinaryPath);
                     WebDriverManager.firefoxdriver().setup();
                     driver = new FirefoxDriver(firefoxOptions);
+                    break;
                 }
                 default: {
                     ChromeOptions chromeOptions= new ChromeOptions();
-                    chromeOptions.setBinary("C:\\Users\\Otabek\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe");
+                    chromeOptions.setBinary(chromeBinaryPath);
                     WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver(chromeOptions);
+                    break;
                 }
             }
             driver.manage().window().maximize();
         }
         return driver;
     }
+
 
     public static void closeDriver() {
         driver.quit();

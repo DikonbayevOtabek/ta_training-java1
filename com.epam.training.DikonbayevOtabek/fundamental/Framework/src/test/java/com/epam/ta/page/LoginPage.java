@@ -1,8 +1,6 @@
 package com.epam.ta.page;
 
 import com.epam.ta.model.User;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -13,14 +11,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage extends AbstractPage{
-    private final Logger logger = LogManager.getRootLogger();
     private final String PAGE_URL_GMAIL =  "https://gmail.com";
     private final String PAGE_URL_MAIL = "https://mail.ru/login";
-
     @FindBy(xpath = "//input[@name='identifier']")
     private WebElement usernameGmail;
     private final By passwordGmailLocator = By.xpath("//input[@name='Passwd']");
-
     @FindBy(xpath = "//input[@name='username']")
     private WebElement usernameMail;
     @FindBy(xpath = "//input[@name='password']")

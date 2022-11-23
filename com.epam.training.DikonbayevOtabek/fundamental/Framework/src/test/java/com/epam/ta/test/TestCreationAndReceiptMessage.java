@@ -7,7 +7,6 @@ import com.epam.ta.util.StringUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-//mvn -Dbrowser=chrome -Dsurefire.suiteXmlFiles=src\test\resources\testng-TestCreationAndReceiptMessage.xml -Denvironment=dev clean test
 public class TestCreationAndReceiptMessage extends CommonConditions{
     private static final int MESSAGE_POSTFIX_LENGTH = 10;
     private static  final String EXPECTED_MESSAGE_VALUE = StringUtils.generateRandomMessageValueWithPostfixLength(MESSAGE_POSTFIX_LENGTH);

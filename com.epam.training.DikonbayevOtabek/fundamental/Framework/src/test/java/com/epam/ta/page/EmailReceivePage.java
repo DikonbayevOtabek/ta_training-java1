@@ -11,9 +11,9 @@ public class EmailReceivePage extends AbstractPage{
 
     private final String BASE_URL = "https://e.mail.ru/messages/inbox/";
     private WebDriverWait wait = new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS);
+
     private final By addressOfSenderLocator = By.xpath("//span[@class='ll-crpt']");
     private final By valueOfMessageLocator = By.xpath("//div[@dir='ltr']");
-
 
     public EmailReceivePage(WebDriver driver) {
         super(driver);

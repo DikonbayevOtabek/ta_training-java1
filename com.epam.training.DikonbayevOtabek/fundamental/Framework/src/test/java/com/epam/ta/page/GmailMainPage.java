@@ -1,6 +1,5 @@
 package com.epam.ta.page;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,12 +10,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class GmailMainPage extends AbstractPage {
     private final String BASE_URL = "https://gmail.com";
     private WebDriverWait wait = new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS);
-
     @FindBy(xpath = "//div[@style='user-select: none']")
-    WebElement createNewMessageButton;
+    private WebElement createNewMessageButton;
     @FindBy(xpath = "//span[@class='nU ']")
-    WebElement newMessageButtonGmail;
-
+    private WebElement newMessageButtonGmail;
 
     public GmailMainPage(WebDriver driver) {
         super(driver);

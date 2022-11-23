@@ -12,8 +12,8 @@ public class MailMainPage extends AbstractPage{
     private final String BASE_URL = "https://mail.ru/login";
     private WebDriverWait wait = new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS);
     @FindBy(xpath = "//span[@class='badge badge_size_m']")
-    WebElement numberOfUnreadMessages;
-    private final By newMessageButtonMailLocator = By.xpath("//span[@class='compose-button__wrapper']");
+    protected WebElement numberOfUnreadMessages;
+    protected final By newMessageButtonMailLocator = By.xpath("//span[@class='compose-button__wrapper']");
 
 
 
